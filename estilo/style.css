@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); /*fonte tirada do google font, basta clicar em select style, clicar na caixinha do canto direito superior, clicar na opção @import e copiar o código sem a tag style*/
+
+@font-face {
+    font-family: 'android';
+    src: url('../fontes/idroid.otf') format('opentype'); /*teve que usar ../ porque o documento style está em uma pasta, para acessa a pasta fonte, tem que voltar 1 pasta para acesssar a pasta fontes, por isso a necessidade de utilizar ../*/
+    font-weight: normal; /*código que altera a fonte para negrito ou mantém normal*/
+}
+
+:root { /*é um pseudocódigo, pode criar variáveis dentro de root, todas as variáveis em CSS tem que começar com --, ao digitar por exemplo background-color e rolar o botão do mouse, irá ver essas variáveis na janela de cores, são variáveis de cores, uma variável serve para guardar informação, cores, etc. Se mudar qualquer cor da paleta, todo código que utilizou determinada cor, irá ficar com a cor setada, exemplo se eu quiser mudar a cor5 para amarelo, tudo que foi utilizado cor5 ficará amarelo. A importância de setar uma variável é que se quiser mudar a cor, mudar a fonte, basta alterar a variável ou alterar o código font-family*/
+    --cor0: #c5ebd6; 
+    --cor1: #83e1ad;
+    --cor2: #3ddc84;
+    --cor3: #2fa866;
+    --cor4: #1a5c37;
+    --cor5: #063d1e;
+
+    --fonte-padrao: Arial, Verdana, Helvetica, sans-serif; /*variável setada com uma fonte padrão*/
+    --fonte-destaque: 'Bebas Neue', 'cursive'; /*fonte que foi setada na linha 3*/ 
+    --fonte-android: 'android', 'cursive'; /*fonte que foi setada na linha 5 a 9*/
+}
+
+* { /*essa tag significa todos os elementos, ou seja, vai alterar todos os elementos de HTML como h1, p, etc. Essa é uma configuração genérica, faz com que tudo fique alinhado a margem da página, principalmente o cabeçalho/heading, tirando as beradas superiores e laterais brancas*/
+    margin: 0px; /*os elementos de HTML não terão margem*/
+    padding: 0px; /*os elementos HTML não terão preenchimento*/
+}
+
+body {
+    background-color: var(--cor0); /*para escolher a cor que foi setada na variável, basta apertar ctrl+espaço e escolher a cor, a variável pode ser digitado a mão*/
+    font-family: var(--fonte-padrao);
+}
+
+a.externo::after { /*todos os links que forem da classe externo, vai ter depois de...*/
+    content: '\00A0\1F517'; /*vai adicionar uma correntinha do lado, o \00A0 antes é para dar espaçamento do texto e do símbolo*/
+}
+
+header {
+    background-color: var(--cor4);
+    min-height: 150px; /*altura mínima do cabeçalho*/
+    text-align: center; /*comando para centralizar o texto do cabeçalho, caso não funcione, deve colocar esse código também em header > h1 e header > p*/
+    padding-top: 40px; /*vai colocar preenchimento de 40 pixel no topo e o texto ficará centralizado na vertical*/
+    background-image: linear-gradient(to bottom, var(--cor3), var(--cor5)); /*código para fazer cor gradiente, to bottom é degrade para baixo, da cor verde claro para cor verde escuro*/
+}
+
+header > h1 { /*dentro do header tem <h1>*/
+    color: white;
+    font-family: var(--fonte-destaque);
+    font-size: 3em; /*tamanho da fonte*/
+    font-weight: normal; /*vai tirar o negrito da fonte por ter setado normal*/
+    margin-bottom: 20px; /*caso a margem abaixo do texto fique muito grande, utiliza esse código para ficar mais centralizado verticalmente*/
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.534); /*código para colocar sombra no texto, primeiro pixel configura horizontalmente, segundo verticalmente, o terceiro pixel que é 0 configura espalhamento, por ultimo a cor black rgba com 50% de transparência da cor*/
+}
+
+header > p { /*dentro de header tem um <p>*/
+    color: white;
+    font-family: var(--fonte-padrao);
+    font-size: 1.2em; /*tamanho da fonte*/
+    max-width: 500px; /*largura máxima de 500px*/
+    margin: auto; /*a margem do texto do cabeçalho ficará centralizada automaticamente*/
+    margin-bottom: 20px; /*margem abaixo do texto do cabeçalho de 20px*/
+    padding-left: 10px; /*fará com que o texto fique de 10 pixel afastado da lateral esquerda do bloco, isso é importante quando o site é aberto em dispotivo pequeno como celular*/
+    padding-right: 10px; /*fará com que o texto fique de 10 pixel afastado da lateral direita do bloco, isso é importante quando o site é aberto em dispotivo pequeno como celular*/
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.308); /*código para colocar sombra no texto, primeiro pixel configura horizontalmente, segundo verticalmente, o terceiro pixel que é 0 configura espalhamento, por ultimo a cor black rgba com 50% de transparência da cor*/
+}
+
+nav {
+    background-color: var(--cor5);
+    padding: 10px; /*o menu vai ficar mais cheio, mais gordo*/
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.308); /*caixa com sombra, o menu ficará com sombra*/
+}
+
+nav > a { /*<a> que está dentro de nav*/
+    color: var(--cor1);
+    padding: 10px; /*preenchimento de 10px*/
+    text-decoration: none; /*text-decoration é para colocar sublinhado, nesse caso "none" é para perder o sublinhado*/
+    font-weight: bold; /*código para colocar a fonte em negrito*/
+    transition-duration: 0.5s; /*é o tempo que leva para a cor aparecer ao passar o mouse em cima do menu*/
+}
+
+nav > a:hover { /*quando passar o mouse em cima do menu irá ficar de outra cor*/
+    background-color: var(--cor3); 
+    color: var(--cor5);    
+}
+
+main { /*conteúdo principal, ´é um bloco*/
+    background-color: white;
+    min-width: 300px; /*largura mínima*/
+    max-width: 1000px; /*largura máxima, é necessário configurar a largura mínima e máxima, para o site se adaptar a diferente tamanhos de tela*/
+    margin: auto; /*margem automática, quando tiver em tela cheia, o conteúdo principal fica centralizado*/
+    margin-bottom: 30px; /*é uma margem embaixo para não ficar muito grudado ao roda pé*/
+    padding: 20px; /*irá afastar o texto, as imagens das bordas, terá um preenchimento de 20px*/
+    box-shadow: 0px 0px 10px rgba(10, 10, 10, 0.5); /*esse código vai criar sombra no corpo do site, 0px é para não ter deslocamento horizontal, 0px para não ter deslocamento vertical, 10px é espalhamento e por ultimo a cor da sombra black com rgb, com 50% de nitidez */
+    border-bottom-left-radius: 10px; /*se colocar somente border radius, irá fazer com que as 4 pontas fique arredondada, mas colocar border-bottom-left ou right, somente as pontas da borda inferior ficará arredondada*/
+    border-bottom-right-radius: 10px;
+}
+
+main h1 { /*irá alterar todo h1 que está dentro de main/conteúdo*/
+    color: var(--cor5); /*cor da letra*/
+    font-family: var(--fonte-android);
+    font-size: 1.8em;
+}
+
+main h2 { /*irá alterar todo h2 que está dentro de main*/
+    font-family: var(--fonte-android); /*font setada em font-faze acima*/
+    color: var(--cor4);
+    font-size: 1.3em;
+    font-weight: normal; /*vai tirar o negrito da fonte*/
+    background-image: linear-gradient(to right, var(--cor1), transparent); /*código de degrade linear, to right gradiente para direita, da cor 1 até transparente*/
+    text-indent: 8px; /*os títulos h2 ficará um pouco deslocado a direita com espaço no início da margem do bloco*/
+}
+
+main p { /*quando não coloca o sinal de maior > vai alterar qualquer p que está dentro de main mas que pode estar dentro de uma outra tag dentro de main, vai alterar todos <p> dentro de main independente se estiver dentro de outra tag, se não colocar main p irá alterar todos os ,<p> e desconfigurar por exemplo o cabeçalho*/
+    margin: 15px 0px; /*15px é em cima e embaixo, 0px é esquerda e direita, vai dar um espaaço em cima e embaixo do texto, é a mesma coisa de 15px 0px 15px 0px*/
+    text-align: justify; /*texto fica justificado*/
+    text-indent: 20px; /*vai dar um recuo no início do parágrafo*/
+    font-size: 1em; /*tamanho da fonte*/
+    line-height: 2em; /*aqui quer dizer que não terá espaço nenhum entre uma linha e outra*/
+}
+
+main strong { /*tudo que for strong "negrito" terá as configurações abaixo*/
+    color: var(--cor4);
+    font-weight: bold; /*negrito*/
+}
+
+main a { /*os links que estiverem dentro de main/conteúdo tera as configurações abaixo*/
+    text-decoration: none; /*text-decoration é para tirar ou colocar sublinhado, como está none vai tirar o sublinhado*/
+    font-weight: bold; /*código para colocar em negrito*/ 
+    color: var(--cor5);  
+    background-color: var(--cor1);
+    padding: 2px 6px; /*espaçamento de 2px em cima e embaixo e 6px de espaçamento na direita e esquerda*/
+}
+
+main a:hover { /*quando passar o mouse em cima do link do conteúdo, irá mudar de cor, assim como o exemplo do menu*/   
+     text-decoration: underline; /*o texto ficará sublinhado*/
+     color: var(--cor4);
+}
+
+main img { /*as imagens está dentro de main*/
+    width: 100%; /*a largura das imagens é de 100%, isso faz com que as imagens se adaptem a diferentes tamanhos de tela*/
+}
+
+main img.pequena {
+    max-width: 350px; /*a imagem é de 400pixel de largura, se colocar 350 pixel ao aumentar ou diminuir a tela, não ficará muito grande nem muito pequeno, ficará em 350 pixel*/
+    display: block; /*uma imagem não é um block por si só, é necessário criar um bloco com display: block;, depois setar margin: auto; ai a imagem fica centralizada*/
+    margin: auto;
+}
+
+div.video { /*toda div que for da class video, div.video e div.video > iframe tudo que for configurado aqui é para deixar o vídeo com responsividade...*/
+    background-color: var(--cor5);
+    margin-bottom: 30px; /*vai colocar um espaço de 30px de baixo do vídeo*/
+    margin: 0px -20px 30px -20px;
+    padding: 20px;
+    padding-bottom: 57%;
+    position: relative;
+}
+
+div.video > iframe {     
+    position: absolute; /*quando coloca position absolute, dá para mexer no top e left*/
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+}
+
+aside {
+    background-color: var(--cor1);
+    padding: 10px; /*preenchimento é o espaço do texto e da borda da caixa*/
+    border-radius: 10px; /*borda arredondada*/
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.363); /*código para adicionar sombra, os 3px é o deslocamento horizontal e vertical, 8px é o espalhamento e por ultimo a cor com rgba com a intensidade de sombreamento de 0.862*/
+}
+
+aside > h3 {
+    background-color: var(--cor4);
+    color: white;
+    padding: 10px; /*preenchimento entre o texto e a caixa*/
+    margin: -10px -10px 0px -10px; /*-10px é para ficar grudado a linha de cima da caixa, o outro -10px é para ficar grudado do lado direito da caixa, 0px é para se manter na mesma posição a linha de baixo, o ultimo -10px é para manter alinhado a esqueda da caixa*/
+    border-radius: 10px 10px 0px 0px; /*aqui vai arredondar a borda superior da direita e da esquerda, e as bordas de baixo vai continuar quadrada, por isso 0px 0px*/
+}
+
+aside > ul { /*vai configurar o ul que está dentro de aside somente*/
+    list-style-type: '\2714\00A0\00A0'; /*ao invés de ficar umas bolinha na frente da lista, vai ficar com emoji setado, deve colocar a barra invertida na frente do código, se não irá aparecer somente os números e não o emoji, o \00A0 é para dar o espaço do emoji e o texto sem quebra, nesse caso deu 2 espaço, mas isso não é compatível com todo navegador*/
+    list-style-position: inside; /*vai colocar as bolinhas para o lado de dentro da caixa*/
+    columns: 2; /*vai dividir a lista ul em 2 colunas*/
+} 
+
+footer {
+    background-color: var(--cor5); /*cor de fundo rodapé*/
+    color: white; /*cor da letra*/
+    text-align: center;
+    font-size: 0.8em;
+    padding: 5px; /*preenchimento para ficar centralizado horizontalmente e verticalmente*/
+}
+
+footer a { /*todo o link que estiver dentro de footer*/
+    color: white;
+    font-weight: bolder; /*serve para colocar a fonte em negrito*/
+    text-decoration: none; /*serve para tirar o sublinhado*/
+}
+
+footer a:hover { /*toda vez que passar o mouse no link em footer, irá destacar uma cor igual no menu*/
+   text-decoration: underline; /*ao passar o mouse em cima vai ficar underline, mas tem que estar dentro da class hover*/
+   color: var (--cor1);
+}
